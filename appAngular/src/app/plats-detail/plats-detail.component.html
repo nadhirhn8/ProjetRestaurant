@@ -1,0 +1,6 @@
+<div class="container mt-5" *ngIf="plat">
+    <h2>{{ plat.nom }}</h2>
+    <img [src]="plat.image" class="img-fluid" alt="Image du plat">
+    <p>{{ plat.description }}</p>
+    <p>Prix: {{ plat.prix }} TND</p>
+  </div>

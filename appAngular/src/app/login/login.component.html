@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Connexion</h2>
+  <form (submit)="login()" class="form-group">
+    <input
+      type="email"
+      [(ngModel)]="credentials.email"
+      class="form-control mb-2"
+      placeholder="Email"
+      required
+    />
+    <input
+      type="password"
+      [(ngModel)]="credentials.password"
+      class="form-control mb-2"
+      placeholder="Mot de passe"
+      required
+    />
+    <button type="submit" class="btn btn-primary">Se connecter</button>
+  </form>
+</div>

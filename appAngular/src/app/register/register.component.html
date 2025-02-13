@@ -1,0 +1,34 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Inscription</h2>
+  <form (submit)="register()" class="form-group">
+    <input
+      type="text"
+      [(ngModel)]="user.username"
+      class="form-control mb-2"
+      placeholder="Nom d'utilisateur"
+      required
+    />
+    <input
+      type="email"
+      [(ngModel)]="user.email"
+      class="form-control mb-2"
+      placeholder="Email"
+      required
+    />
+    <input
+      type="password"
+      [(ngModel)]="user.password"
+      class="form-control mb-2"
+      placeholder="Mot de passe"
+      required
+    />
+    <input
+      type="password"
+      [(ngModel)]="user.confirm_password"
+      class="form-control mb-2"
+      placeholder="Confirmer le mot de passe"
+      required
+    />
+    <button type="submit" class="btn btn-primary">S'inscrire</button>
+  </form>
+</div>

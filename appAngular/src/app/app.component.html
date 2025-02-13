@@ -1,0 +1,153 @@
+<!-- Conteneur principal -->
+<div class="container-fluid">
+  <div class="row">
+    <!-- Menu latéral (Mode sombre, bleu ciel) -->
+    <nav id="sidebar" class="col-md-2 d-none d-md-block sidebar shadow-sm">
+      <div class="position-sticky pt-3">
+        <h4 class="text-center text-light">📌 Menu</h4>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/dashboard">🏠 Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/plats">🍛 Plats disponibles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/add-plat">➕ Ajouter un plat</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/reservations">📅 Réservations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/clients">🧑‍🤝‍🧑 Nos Clients</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/messages">💬 Messages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/avis">⭐ Avis Clients</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" routerLink="/logout">🚪 Déconnexion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-success" routerLink="/login">🔑 Connexion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-info" routerLink="/register">📝 Inscription</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main class="col-md-10 ms-sm-auto px-md-4">
+      <div class="dashboard">
+        <h2 class="mt-4 text-primary">Bienvenue dans le Dashboard</h2>
+        
+        <!-- Statistiques générales -->
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+              <div class="card-header">📌 Nombre de Plats</div>
+              <div class="card-body">
+                <h5 class="card-title">32 plats</h5>
+                <p class="card-text">Découvrez nos spécialités tunisiennes.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+              <div class="card-header">👥 Clients enregistrés</div>
+              <div class="card-body">
+                <h5 class="card-title">128 Clients</h5>
+                <p class="card-text">Nos clients fidèles.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-white bg-danger mb-3">
+              <div class="card-header">📅 Réservations</div>
+              <div class="card-body">
+                <h5 class="card-title">18 Réservations</h5>
+                <p class="card-text">Gestion simplifiée.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-white bg-info mb-3">
+              <div class="card-header">⭐ Avis Clients</div>
+              <div class="card-body">
+                <h5 class="card-title">4.8/5</h5>
+                <p class="card-text">Satisfaction garantie.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tableau des Réservations -->
+        <div class="card mt-4">
+          <div class="card-header bg-primary text-white">📅 Réservations récentes</div>
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Date</th>
+                  <th>Statut</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Ali Ben Salem</td>
+                  <td>14/02/2025</td>
+                  <td><span class="badge bg-success">Confirmée</span></td>
+                  <td>
+                    <button class="btn btn-sm btn-warning">Modifier</button>
+                    <button class="btn btn-sm btn-danger">Supprimer</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Fatma Trabelsi</td>
+                  <td>15/02/2025</td>
+                  <td><span class="badge bg-warning">En attente</span></td>
+                  <td>
+                    <button class="btn btn-sm btn-warning">Modifier</button>
+                    <button class="btn btn-sm btn-danger">Supprimer</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
+
+<style>
+  /* Sidebar sombre avec bleu ciel */
+  #sidebar {
+    background-color: #1c1e26;
+    height: 100vh;
+    color: white;
+  }
+  #sidebar .nav-link {
+    color: #a1caff;
+    font-weight: bold;
+    margin-top: 14%;
+    font-size: large;
+  }
+  #sidebar .nav-link:hover {
+    background-color: #2a2d37;
+    color: white;
+    border-radius: 5px;
+  }
+  #sidebar .nav-link.active {
+    background-color: #0066cc;
+    color: white;
+    border-radius: 5px;
+  }
+</style>

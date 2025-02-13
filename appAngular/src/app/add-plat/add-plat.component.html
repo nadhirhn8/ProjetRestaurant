@@ -1,0 +1,10 @@
+<div class="container mt-5">
+    <h2>Ajouter un plat</h2>
+    <form (submit)="addPlat()">
+      <input type="text" [(ngModel)]="plat.nom" class="form-control mb-2" placeholder="Nom du plat" required>
+      <input type="text" [(ngModel)]="plat.description" class="form-control mb-2" placeholder="Description" required>
+      <input type="number" [(ngModel)]="plat.prix" class="form-control mb-2" placeholder="Prix" required>
+      <input type="text" [(ngModel)]="plat.image" class="form-control mb-2" placeholder="URL de l'image" required>
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+  </div>

@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Liste des plats</h2>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let plat of plats">
+      <div class="card">
+        <img [src]="plat.image" class="card-img-top" alt="Image du plat">
+        <div class="card-body">
+          <h5 class="card-title">{{ plat.nom }}</h5>
+          <p class="card-text">{{ plat.description }}</p>
+          <p class="card-text">Prix: {{ plat.prix }} TND</p>
+          <a [routerLink]="['/plats', plat.id]" class="btn btn-primary">Voir détails</a>
+          <button (click)="editPlat(plat)" class="btn btn-warning ms-2">Modifier</button>
+          <button (click)="deletePlat(plat.id)" class="btn btn-danger ms-2">Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
