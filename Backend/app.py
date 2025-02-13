@@ -9,13 +9,19 @@ from datetime import timedelta
 
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
+CORS(app, resources={r"/plats/*": {"origins": "http://localhost:4200"}})  # Angular par défaut
 app.config['JWT_SECRET_KEY'] = 'secret-key'
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=1)
 jwt = JWTManager(app)
 
 # Connexion à Elasticsearch
-es = Elasticsearch([{'host': 'localhost', 'port': 9200, 'scheme': 'http'}])
+es = Elasticsearch(
+    "http://localhost:9200",
+    basic_auth=("elastic", "ton_mot_de_passe")  # Remplace "ton_mot_de_passe"
+)
+
+res = es.search(index="plats", body={"query": {"match_all": {}}})
+print(res)
 
 # Vérifier si Elasticsearch fonctionne
 @app.route('/health', methods=['GET'])
@@ -102,6 +108,12 @@ def update_plat(id):
 @app.route('/plats/<id>', methods=['DELETE'])
 @jwt_required()
 def delete_plat(id):
+    # Vérifier si le plat existe
+    res = es.get(index="plats", id=id, ignore=404)
+    if not res or '_source' not in res:
+        return jsonify({"error": "Plat non trouvé"}), 404  # Retourne une erreur 404
+    
+    print(f"Suppression du plat avec ID: {id}")  # Debugging
     es.delete(index="plats", id=id, ignore=404)
     return jsonify({"message": "Plat supprimé avec succès"})
 
